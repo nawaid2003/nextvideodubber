@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   --bg-dark: #0f1116;
@@ -21,7 +21,6 @@ body {
   height: 100%;
   width: 100%;
   overflow: auto;
-  zoom: 1;
 }
 
 body {
@@ -89,21 +88,56 @@ body {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  z-index: 20;
-  bottom: 110%;
+  z-index: 100;
+  bottom: 120%;
   left: 50%;
-  transform: translateX(-50%) scale(0.9);
+  transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.9);
   border-radius: 8px;
-  padding: 8px;
-  transition: opacity 0.15s ease-out, visibility 0.15s ease-out,
-    transform 0.15s ease-out;
-  white-space: nowrap;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  padding: 12px;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.color-button:hover .color-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.tooltip-header {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.tooltip-code {
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.tooltip-ansi {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.color-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
 }
 
 .color-tooltip-code {
@@ -119,23 +153,6 @@ body {
 .color-tooltip-name {
   color: white;
   font-size: 0.7rem;
-}
-
-.color-button:hover .color-tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-
-.color-tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
 }
 
 .text-editor {
@@ -161,6 +178,9 @@ body {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 5px;
 }
 
 .action-buttons button {
@@ -174,6 +194,7 @@ body {
   font-weight: 500;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
 }
 
 .action-buttons button:hover {
@@ -183,7 +204,23 @@ body {
 }
 
 .action-buttons button.active {
-  background-color: var(--accent-primary);
+  background-color: var(--accent-primary) !important;
+  color: white !important;
+}
+
+/* Scrollbar styling for action buttons */
+.action-buttons::-webkit-scrollbar {
+  height: 4px;
+}
+
+.action-buttons::-webkit-scrollbar-track {
+  background: #2c3036;
+  border-radius: 2px;
+}
+
+.action-buttons::-webkit-scrollbar-thumb {
+  background: #5865f2;
+  border-radius: 2px;
 }
 
 .section-label {
@@ -256,4 +293,187 @@ body {
 .text-editor span {
   font-weight: bold;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ANSI color classes */
+.ansi-1 {
+  font-weight: bold !important;
+  text-decoration: none !important;
+}
+
+.ansi-4 {
+  text-decoration: underline !important;
+}
+
+.ansi-30 {
+  color: #4f545c;
+}
+.ansi-31 {
+  color: #dc322f;
+}
+.ansi-32 {
+  color: #859900;
+}
+.ansi-33 {
+  color: #b58900;
+}
+.ansi-34 {
+  color: #268bd2;
+}
+.ansi-35 {
+  color: #d33682;
+}
+.ansi-36 {
+  color: #2aa198;
+}
+.ansi-37 {
+  color: #ffffff;
+}
+
+.ansi-30-bg {
+  background-color: #4f545c;
+}
+.ansi-31-bg {
+  background-color: #dc322f;
+}
+.ansi-32-bg {
+  background-color: #859900;
+}
+.ansi-33-bg {
+  background-color: #b58900;
+}
+.ansi-34-bg {
+  background-color: #268bd2;
+}
+.ansi-35-bg {
+  background-color: #d33682;
+}
+.ansi-36-bg {
+  background-color: #2aa198;
+}
+.ansi-37-bg {
+  background-color: #ffffff;
+}
+
+.ansi-40 {
+  background-color: #002b36;
+}
+.ansi-41 {
+  background-color: #cb4b16;
+}
+.ansi-42 {
+  background-color: #586e75;
+}
+.ansi-43 {
+  background-color: #657b83;
+}
+.ansi-44 {
+  background-color: #839496;
+}
+.ansi-45 {
+  background-color: #6c71c4;
+}
+.ansi-46 {
+  background-color: #93a1a1;
+}
+.ansi-47 {
+  background-color: #fdf6e3;
+}
+
+/* Color Button Styles */
+.color-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.color-button {
+  aspect-ratio: 1/1;
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.selected-check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* Tooltip Styles */
+.color-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  pointer-events: none;
+}
+
+.color-button-container:hover .color-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.tooltip-header {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.tooltip-code {
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.tooltip-ansi {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.color-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+.text-editor em,
+.text-editor i,
+.text-editor span[style*="italic"] {
+  font-style: italic !important;
 }
