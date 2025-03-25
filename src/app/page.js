@@ -178,7 +178,7 @@ export default function Home() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Rebane's Discord Generator</h1>
+        <h1>Rebane&apos;s Discord Generator</h1>
         <p className="header-description">
           Craft Vibrant Messages with ANSI Color Magic
         </p>
